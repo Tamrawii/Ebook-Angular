@@ -25,5 +25,11 @@ export class EbooksService {
     return [...this.ebooks]; // search about it
   }
 
-  // addEbooks...
+  getLastId(): number {
+    return this.ebooks[this.ebooks.length - 1].id;
+  }
+
+  addEbook(ebook: IEbooks) {
+    this.ebooks = [...this.ebooks, ebook];
+  }
 }

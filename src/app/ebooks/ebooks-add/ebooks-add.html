@@ -5,16 +5,40 @@
     <input type="text" class="form-control" id="title" name="title" ngModel required #t="ngModel" />
     @if (t.invalid && t.touched) {
 
-    <span>Must not be empty</span>
+    <span class="error">Title must not be empty</span>
     }
   </div>
   <div class="mb-3">
     <label for="author" class="form-label">Auteur</label>
-    <input type="text" class="form-control" id="author" name="author" ngModel required />
+    <input
+      type="text"
+      class="form-control"
+      id="author"
+      name="author"
+      ngModel
+      required
+      #a="ngModel"
+    />
+    @if (a.invalid && a.touched) {
+
+    <span class="error">Author must not be empty</span>
+    }
   </div>
   <div class="mb-3">
     <label for="price" class="form-label">Prix</label>
-    <input type="number" class="form-control" id="price" name="price" ngModel required />
+    <input
+      type="number"
+      class="form-control"
+      id="price"
+      name="price"
+      ngModel
+      required
+      #p="ngModel"
+    />
+    @if (p.invalid && p.touched) {
+
+    <span class="error">Price must not be empty</span>
+    }
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
 </form>

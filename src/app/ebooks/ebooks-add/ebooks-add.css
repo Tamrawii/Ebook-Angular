@@ -3,5 +3,5 @@ input.ng-invalid.ng-touched {
 }
 
 .error {
-    
+    color: red;
 }
