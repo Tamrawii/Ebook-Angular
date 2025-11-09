@@ -7,7 +7,7 @@ import { EbooksEdit } from './ebooks-edit/ebooks-edit';
 const routes: Routes = [
   { path: '', component: EbooksList },
   { path: 'add', component: EbooksAdd },
-  { path: 'edit', component: EbooksEdit },
+  { path: 'edit/:id', component: EbooksEdit }, // the id will be shown in the url (https://www.ebooks.edit/1)
 ];
 
 @NgModule({

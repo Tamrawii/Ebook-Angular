@@ -21,8 +21,9 @@
       <td>{{ ebook.author }}</td>
       <td>{{ ebook.price }}</td>
       <td>
-        <button class="btn btn-success">Editer</button> &nbsp;
-        <button class="btn btn-danger">Supprimer</button>
+        <button class="btn btn-success" [routerLink]="['/ebooks', 'edit', ebook.id]">Editer</button>
+        &nbsp;
+        <button class="btn btn-danger" (click)="deleteEbook(ebook.id)">Supprimer</button>
       </td>
     </tr>
     }

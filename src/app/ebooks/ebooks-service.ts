@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IEbooks } from './iebooks';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +22,14 @@ export class EbooksService {
     },
   ];
 
+  ebooksChanged = new Subject<IEbooks[]>();
+
   getEbooks(): IEbooks[] {
     return [...this.ebooks]; // search about it
+  }
+
+  getEBookById(id: number): IEbooks | undefined {
+    return this.ebooks.find((ebook) => ebook.id === id);
   }
 
   getLastId(): number {
@@ -31,5 +38,18 @@ export class EbooksService {
 
   addEbook(ebook: IEbooks) {
     this.ebooks = [...this.ebooks, ebook];
+  }
+
+  editBook(ebook: IEbooks) {
+    this.ebooks = this.ebooks.map((e) => (e.id === ebook.id ? ebook : e));
+  }
+
+  deleteEbook(id: number) {
+    if (confirm('Etes-vous sûre de vouloir supprimer le livre?')) {
+      this.ebooks = this.ebooks.filter((ebook) => ebook.id !== id);
+
+      console.log(this.ebooks);
+      this.ebooksChanged.next([...this.ebooks]);
+    }
   }
 }
